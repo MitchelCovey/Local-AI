@@ -1,0 +1,26 @@
+
+Updating OpenWebUI Docker Container
+
+Steps to Update OpenWebUI:
+
+1. Stop the Running OpenWebUI Container
+   To stop the current OpenWebUI container, run the following command:
+   sudo docker stop open-webui
+
+2. Remove the Existing OpenWebUI Container
+   After stopping the container, remove it:
+   sudo docker rm open-webui
+
+3. Pull the Latest Docker Image
+   Fetch the latest OpenWebUI image from Docker:
+   sudo docker pull ghcr.io/open-webui/open-webui:main
+
+4. Re-run the OpenWebUI Container
+   Run the OpenWebUI container with the latest image. Use the same parameters as before:
+   sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
+5. Verify the Update
+   To ensure the update was successful, check if the OpenWebUI is running by accessing it in your browser:
+   http://127.0.0.1:11434
+   You can also check the logs for any errors or confirmation that the container is running:
+   sudo docker logs -f open-webui
